@@ -22,7 +22,7 @@ clear; clc; close all;
 % Read data
 data = load('../../Data/ex6data1.mat');
 
-% Remove the outiler
+% Remove the outiler （the hard margin model is sensitive to outilers）
 X = data.X(1:end-1,:);
 y = 2 * data.y(1:end-1) - 1;    % y(i) = {1, -1}
 
@@ -58,7 +58,7 @@ pause;
 % w = sum alpha(i) * y(i) * x(i)
 w = sum(X(sv,:)' * (alpha(sv) .* y(sv)), 2);
 
-% b = 1 / m * y(i) - w' * x(i)
+% b = 1 / m * (y(i) - w' * x(i))
 b = mean(y(sv) - X(sv,:) * w);
 
 fprintf('The value of w: \n');
