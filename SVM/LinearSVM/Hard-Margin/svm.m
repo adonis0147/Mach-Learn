@@ -22,7 +22,7 @@ clear; clc; close all;
 % Read data
 data = load('../../Data/ex6data1.mat');
 
-% Remove the outiler （the hard margin model is sensitive to outilers）
+% Remove the outiler (the hard margin model is sensitive to outilers)
 X = data.X(1:end-1,:);
 y = 2 * data.y(1:end-1) - 1;    % y(i) = {1, -1}
 
