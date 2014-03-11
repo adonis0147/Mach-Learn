@@ -35,7 +35,7 @@ function [model] = trainSVM(X, y, kernel, C, epsilon)
 %       model.y:    The labels of support vectors
 %       model.kernelFunction:   The kernel function used to train
 %       model.alpha:    The dual variables correspoding to support vectors
-%       model.w:    Linear margin when using linear kernel
+%       model.w:    Linear margin in input space (linear kernel)
 %       model.b:    bias
 
 if nargin < 3
@@ -67,7 +67,8 @@ options = optimset('Algorithm', 'interior-point-convex');
 % Find the support vectors
 sv = find(alpha > epsilon);
 
-% w = sum alpha(i) * y(i) * x(i)    (linear margin when using linear kernel)
+% w = sum alpha(i) * y(i) * x(i)
+% linear margin in input space (linear kernel)
 w = X(sv,:)' * diag(y(sv)) * alpha(sv);
 
 % Find some support vectors which are on the margin (0 < alpha < C)
