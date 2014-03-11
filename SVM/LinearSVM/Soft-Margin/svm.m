@@ -64,7 +64,7 @@ w = sum(X(sv,:)' * (alpha(sv) .* y(sv)), 2);
 % Find some support vectors which are on the margin (0 < alpha < C)
 msv = find(alpha > epsilon & abs(alpha - C) > epsilon);
 
-% b = 1 / m * (y(i) - w' * x(i))
+% b = 1 / m * sum y(i) - w' * x(i)
 b = mean(y(msv) - X(msv,:) * w);
 
 fprintf('The value of w: \n');

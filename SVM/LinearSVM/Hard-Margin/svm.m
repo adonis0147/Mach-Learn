@@ -58,7 +58,7 @@ pause;
 % w = sum alpha(i) * y(i) * x(i)
 w = sum(X(sv,:)' * (alpha(sv) .* y(sv)), 2);
 
-% b = 1 / m * (y(i) - w' * x(i))
+% b = 1 / m * sum y(i) - w' * x(i)
 b = mean(y(sv) - X(sv,:) * w);
 
 fprintf('The value of w: \n');
